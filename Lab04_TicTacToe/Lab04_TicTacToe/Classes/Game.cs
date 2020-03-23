@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lab04_TicTacToe.Classes
 {
-	class Game
+	public class Game
 	{
 		public Player PlayerOne { get; set; }
 		public Player PlayerTwo { get; set; }
@@ -33,7 +33,7 @@ namespace Lab04_TicTacToe.Classes
 
 			//TODO: Complete this method and utilize the rest of the class structure to play the game.
 
-            /*
+			/*
              * Complete this method by constructing the logic for the actual playing of Tic Tac Toe. 
              * 
              * A few things to get you started:
@@ -47,6 +47,35 @@ namespace Lab04_TicTacToe.Classes
 
             Use any and all pre-existing methods in this program to help construct the method logic. 
              */
+
+			bool isWinner = false;
+			int count = 0;
+			Player current = new Player();
+			while (!isWinner)
+			{
+				count++;
+				SwitchPlayer();
+				Console.Clear();
+				Board.DisplayBoard();
+				current = NextPlayer();
+				bool taken = false;
+				while (!taken)
+				{
+					taken = current.TakeTurn(Board);
+				}
+				isWinner = CheckForWinner(Board);
+
+				if (count == 9)
+				{
+					current.Name = "draw";
+					isWinner = true;
+				}
+			}
+			Winner = current;
+			return Winner;
+
+
+
 		}
 
 
@@ -84,7 +113,12 @@ namespace Lab04_TicTacToe.Classes
 
 				// TODO:  Determine a winner has been reached. 
 				// return true if a winner has been reached. 
-			
+
+				if (a == b && b == c)
+				{
+					return true;
+				}
+				
 			}
 
 			return false;
@@ -106,11 +140,8 @@ namespace Lab04_TicTacToe.Classes
 		public void SwitchPlayer()
 		{
 			if (PlayerOne.IsTurn)
-			{
-              
+			{              
 				PlayerOne.IsTurn = false;
-
-              
 				PlayerTwo.IsTurn = true;
 			}
 			else
@@ -119,7 +150,6 @@ namespace Lab04_TicTacToe.Classes
 				PlayerTwo.IsTurn = false;
 			}
 		}
-
 
 	}
 }
