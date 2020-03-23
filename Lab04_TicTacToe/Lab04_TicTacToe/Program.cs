@@ -11,6 +11,9 @@ namespace Lab04_TicTacToe
             PlayGame();
         }
         
+        /// <summary>
+        /// Inputs the users names as well, setting the markers for each user, as well if its the users turn or not.
+        /// </summary>
         static void PlayGame()
         {
             Console.WriteLine("Player 1, what is your name?");

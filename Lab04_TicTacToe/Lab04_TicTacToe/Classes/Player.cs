@@ -17,7 +17,11 @@ namespace Lab04_TicTacToe.Classes
 		/// </summary>
 		public bool IsTurn { get; set; }
 
-
+		/// <summary>
+		/// This method gets the user input and assigns their input into the board.
+		/// </summary>
+		/// <param name="board"> takes in the board </param>
+		/// <returns> the users wanted space on the board </returns>
 		public Position GetPosition(Board board)
 		{
 			Position desiredCoordinate = null;
@@ -31,7 +35,11 @@ namespace Lab04_TicTacToe.Classes
 
 		}
 
-
+		/// <summary>
+		/// This method assigns the position chosen to the corresponding 2d array's area.
+		/// </summary>
+		/// <param name="position"> the users position they chose </param>
+		/// <returns> returns the index the user chose </returns>
 		public static Position PositionForNumber(int position)
 		{
 			switch (position)
@@ -50,7 +58,11 @@ namespace Lab04_TicTacToe.Classes
 			}
 		}
 
-	
+	/// <summary>
+	/// This method tells us if the space the user inputted is already taken if its not input it.
+	/// </summary>
+	/// <param name="board"> The board </param>
+	/// <returns> a boolean, if true, users input is inputted. If false, position is already taken </returns>
 		public bool TakeTurn(Board board)
 		{
 			IsTurn = true;
